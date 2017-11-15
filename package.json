@@ -1,0 +1,26 @@
+{
+  "name": "angular-test",
+  "version": "2.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "angular": "^1.6.6",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongojs": "^2.4.1"
+  },
+  "devDependencies": {
+    "jasmine-core": "2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "localtunnel": "1.8.3"
+  },
+  "scripts": {
+    "tunnel": "lt --port 8888",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Sergey Romankov",
+  "license": "MIT"
+}
