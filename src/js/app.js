@@ -16,17 +16,20 @@
         
         var refresh = $scope.refresh
         
+        $scope.areFieldsFilled = function () {
+            return !($scope.user.firstname === undefined ||
+                 $scope.user.lastname === undefined ||
+                 $scope.user.year === undefined)
+         }
+
         $scope.addUser = function () {
-            if ($scope.user.firstname === undefined &&
-                $scope.user.lastname === undefined &&
-                $scope.user.year === undefined) {
-                console.warn("Let's fill the fields")
+            if (!$scope.areFieldsFilled()) {
+                console.warn("Let's fill the fields");
             } else {
                 $http.post('/userlist', $scope.user)
                     .then(function (res) {
-                        $scope.userlist.push(res);
+                        $scope.userlist.push(res.data);
                         $scope.user = {};
-                        $scope.refresh();
                     });
             };
         };
@@ -48,10 +51,8 @@
         };
 
         $scope.update = function () {
-            if ($scope.user.firstname === undefined &&
-                $scope.user.lastname === undefined &&
-                $scope.user.year === undefined) {
-                console.warn("Let's press 'Edit' button for update data.")
+            if ($scope.areFieldsFilled()) {
+                console.warn("Let's press 'Edit' button for update data.");
             } else {
                 $http.put('/userlist/' + $scope.user._id, $scope.user).then(function (response) {
                     refresh();
