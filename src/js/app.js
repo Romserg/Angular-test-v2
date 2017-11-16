@@ -3,7 +3,6 @@
     myApp.controller('appCtrl', ['$scope', '$http', function ($scope, $http) {
 
         $scope.refresh = function () {
-            $scope.test = "test";
             $http.get('/userlist')
                 .then(function (response) {
                     $scope.userlist = response.data;

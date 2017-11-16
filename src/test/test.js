@@ -13,7 +13,7 @@ describe('myApp', function () {
                     year: 1976
                 }]);
 
-            scope = $rootScope.$new(); //этот работает тест
+            scope = $rootScope.$new();
 
             ctrl = $controller('appCtrl', {
                 $scope: scope
@@ -28,7 +28,7 @@ describe('myApp', function () {
                 year: 1976
             }]);
         });
-    })
+    });
 
     describe('Test POST request by addUser', function () {
         beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
@@ -48,20 +48,19 @@ describe('myApp', function () {
             });
         }));
         it('POST Request addUser', function () {
-            
             scope.user = {
                 firstname: 'Tim',
                 lastname: 'Miller',
                 year: 1990
-            }; 
+            };
             scope.addUser()
             httpBackend.flush();
-            console.log(scope.userlist)
+            // console.log(scope.userlist)
             expect(scope.userlist).toEqual([{
                 firstname: "Tim",
                 lastname: "Miller",
                 year: 1990
             }]);
         });
-    })
+    });
 });
